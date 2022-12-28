@@ -6,10 +6,12 @@ import plotly.express as px
 # import youtube_dl
 
 
+with open("./info.json") as f:
+    info = json.load(f)
+url = info["URL"]
+
+
 # fetch the chat data
-url = input("Youtube link: ")
-
-
 os.system(
     f'chat_downloader {url} --output ./working/chat.json --message_groups "messages superchat"> /dev/null'
 )
@@ -54,7 +56,6 @@ while timeEnd <= df.at[df.index[-1], "time_in_seconds"]:
 # add the values before and after exponentially decrease, 50, 25, 12.5 etc then added up
 outputDf = outputDf[::-1]
 outputDf = outputDf.reset_index(drop=True)
-print(outputDf)
 for row in range(len(outputDf["frequency"])):
     if row < 4:
         outputDf.at[row, "averaged"] = outputDf.loc[0 : row + 5]["frequency"].mean()
@@ -71,12 +72,9 @@ for row in range(len(outputDf["frequency"])):
 fig = px.line(outputDf, x="timestamp", y="frequency")
 fig.show()
 fig.write_html("./working/raw.html")
-fig = px.line(outputDf, x="timestamp", y="averaged")
+fig = px.line(outputDf, x="timestamp", y="averaged", title=info["Title"])
 fig.show()
 fig.write_html("./working/averaged.html")
 
-
-outputDf = outputDf.sort_values("averaged", ascending=False)
-outputDf = outputDf.reset_index(drop=True)
 
 outputDf.to_csv("./working/frequency.csv")
