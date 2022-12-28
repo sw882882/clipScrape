@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import datetime
 import plotly.express as px
-
+import json
 # import youtube_dl
 
 
@@ -41,7 +41,7 @@ while timeEnd <= df.at[df.index[-1], "time_in_seconds"]:
         chunkFrequency += 1
     new_row = pd.DataFrame(
         {
-            "timestamp": str(datetime.timedelta(seconds=startingSec)),
+            "timestamp": str(datetime.timedelta(seconds=int(startingSec))),
             "frequency": chunkFrequency,
         },
         index=[0],
