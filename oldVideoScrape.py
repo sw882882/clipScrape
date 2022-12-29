@@ -2,6 +2,8 @@ import pandas as pd
 import json
 import os
 
+print("WARNING: This is the command line only, use the other videoScrape for a better UI experience")
+
 with open("./info.json") as f:
     info = json.load(f)
 
