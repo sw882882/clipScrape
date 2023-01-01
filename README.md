@@ -12,3 +12,5 @@ a bunch of scripts I made to help with clipping streams, it should work as long 
 
 TO-DOs
 - [x] make a pyQT UI to make videoScrape.py less just downloading randomly (which is currently just download -3 min & +5 min from the peak chat frequency) and actually user controllable.
+- [ ] fix the UI not updating properly after downloading from yt-dlp
+- [ ] make diarization less gimicky
