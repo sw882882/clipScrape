@@ -3,7 +3,7 @@
 a bunch of scripts I made to help with clipping streams, it should work as long as yt-dlp and chat-downloader supports whatever website you wish to use
 ## Installation & Usage
 1. install python and pip
-2. pip install -r requirements.txt
+2. pip install -r requirements.txt, you will probably need ffmpeg as well
 3. use the scripts
     1. the links and info goes into info.json
     2. run chatScrape.py to generate a graph to see chat frequency, graphs, json, and csv output will be in the ./working directory

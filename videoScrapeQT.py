@@ -108,6 +108,12 @@ class Ui_MainWindow(object):
              {info["URL"]} &
             """
         )
+        os.system(
+            f"""
+                    ffmpeg -i "./output/{start}-{end}.mp4" -c:v dnxhd -profile:v dnxhr_hq -pix_fmt yuv422p -c:a pcm_s16le -f mov "./output/{start}-{end}.mov"
+            """
+        )
+        os.remove("./output/{start}-{end}.mp4")
         tempdf = df[start < df["timestamp"]]
         tempdf = tempdf[end > df["timestamp"]]
         df = pd.concat([df, tempdf, tempdf]).drop_duplicates(keep=False)

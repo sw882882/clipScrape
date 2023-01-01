@@ -70,10 +70,8 @@ for row in range(len(outputDf["frequency"])):
 
 
 fig = px.line(outputDf, x="timestamp", y="frequency")
-fig.show()
 fig.write_html("./working/raw.html")
 fig = px.line(outputDf, x="timestamp", y="averaged", title=info["Title"])
-fig.show()
 fig.write_html("./working/averaged.html")
 
 

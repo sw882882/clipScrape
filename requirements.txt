@@ -2,6 +2,7 @@ pandas==1.5.1
 plotly==5.11.0
 git+https://github.com/jianfch/stable-ts.git
 whisper
+webvtt-py
 stable_ts==1.0.1
 chat_downloader==0.2.3
 yt-dlp==2022.11.11
