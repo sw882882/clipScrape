@@ -14,3 +14,4 @@ TO-DOs
 - [x] make a pyQT UI to make videoScrape.py less just downloading randomly (which is currently just download -3 min & +5 min from the peak chat frequency) and actually user controllable.
 - [ ] fix the UI not updating properly after downloading from yt-dlp
 - [ ] make diarization less gimicky
+    - possibly use a different, less scattered library that isn't just for speech recognition
