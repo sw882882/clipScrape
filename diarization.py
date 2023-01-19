@@ -4,7 +4,6 @@ import re
 from stable_whisper import load_model
 from stable_whisper import results_to_sentence_srt
 import webvtt
-from datetime import timedelta
 
 pipeline = Pipeline.from_pretrained(
     "pyannote/speaker-diarization",
@@ -109,10 +108,12 @@ for g in groups:
     gidx += 1
     captions = [
         [(int)(millisec(caption.start)), (int)(millisec(caption.end)), caption.text]
-        for caption in webvtt.from_srt("./working/segment/example/" + str(gidx) + ".srt")
+        for caption in webvtt.from_srt(
+            "./working/segment/example/" + str(gidx) + ".srt"
+        )
     ]
     # captions = (list) webvtt.read(str(gidx) + '.wav.vtt')
-    
+
     counter = 1
 
     if captions:

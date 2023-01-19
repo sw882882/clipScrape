@@ -1,14 +1,20 @@
-from stable_whisper import load_model
-from stable_whisper import results_to_sentence_srt
-
-# from stable_whisper import results_to_sentence_word_ass
 import glob
+import os
 
-files = glob.glob("./output/*.mov")
+files = glob.glob("./output/*.mp4")
 print(files)
-model = load_model("medium")
 
-for file in files:
-    results = model.transcribe(file, language="en")
-    results_to_sentence_srt(results, str(file).replace("mov", "srt"), end_before_period=True)
-#    results_to_sentence_word_ass(results, str(file).replace("mp4", "srt"))
+files[0]
+
+os.system(
+    f"""
+    whisperx --model medium \\
+            --language en \\
+            -o output \\
+            --align_model WAV2VEC2_ASR_LARGE_LV60K_960H \\
+            {files[0]}
+    """
+)
+
+os.rmdir("./output/*.ass")
+os.rmdir("./output/*.word.srt")
