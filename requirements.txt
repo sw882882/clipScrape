@@ -1,7 +1,6 @@
 pandas
 plotly
-webvtt-py
 chat_downloader
 yt-dlp
-asstosrt
 git+https://github.com/m-bain/whisperx.git
+pyqt5

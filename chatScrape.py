@@ -3,8 +3,6 @@ import pandas as pd
 import datetime
 import plotly.express as px
 import json
-# import youtube_dl
-
 
 with open("./info.json") as f:
     info = json.load(f)
@@ -18,7 +16,7 @@ os.system(
 
 # parse json
 df = pd.read_json("./working/chat.json")
-df.to_csv("./working/convert.csv")
+# df.to_csv("./working/convert.csv")
 df = df.drop(df.index[df["time_in_seconds"] < 0])
 df = df.reset_index()
 
@@ -51,9 +49,7 @@ while timeEnd <= df.at[df.index[-1], "time_in_seconds"]:
     timeEnd += timeChunks
 
 
-# add another column for clippability score, or segmenting
-# make it so that it chooses 1 point and goes back/forward until it reaches a value 40% or bigger than the original value
-# add the values before and after exponentially decrease, 50, 25, 12.5 etc then added up
+# get the average of 5 columns before and ahead to make the data less random
 outputDf = outputDf[::-1]
 outputDf = outputDf.reset_index(drop=True)
 for row in range(len(outputDf["frequency"])):
